@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!--
+  Política de privacidad. La exige Paddle para verificar el dominio y también la
+  Chrome Web Store para publicar la extensión.
+
+  Todo lo que dice está comprobado contra el código, no supuesto. En particular:
+  el reconocedor de Chrome ENVÍA EL AUDIO A GOOGLE, y aquí se dice con todas las
+  letras. Escribir «tu voz no sale de tu dispositivo» habría sido falso, y una
+  declaración falsa de privacidad es un problema legal de verdad.
+
+  Si algún día se cambia el motor de reconocimiento o se añade cualquier envío a
+  un tercero, esta página hay que actualizarla en el mismo commit.
+-->
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Política de privacidad — Pronuncia</title>
+    <link rel="stylesheet" href="../estilo.css" />
+  </head>
+  <body>
+    <header>
+      <a class="marca" href="../">Pronuncia</a>
+      <nav>
+        <a href="../">Inicio</a>
+        <a href="../terminos/">Términos</a>
+        <a href="../reembolsos/">Reembolsos</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Política de privacidad</h1>
+      <p class="suave">Última actualización: <span class="rellenar">[FECHA DE PUBLICACIÓN]</span></p>
+
+      <h2>Quién trata tus datos</h2>
+      <p>
+        El responsable del tratamiento es <span class="rellenar">[TU NOMBRE LEGAL]</span>,
+        autónomo registrado en el Reino Unido, <span class="rellenar">[TU DIRECCIÓN]</span>.
+        Para cualquier cuestión sobre tus datos: <span class="rellenar">[TU CORREO]</span>.
+      </p>
+
+      <h2>Lo más importante, primero</h2>
+      <p>
+        Pronuncia usa el <strong>reconocimiento de voz integrado en Google Chrome</strong>.
+        Ese componente es del navegador, no nuestro, y funciona
+        <strong>enviando el audio de tu micrófono a los servidores de Google</strong> para
+        transcribirlo. Ocurre igual en cualquier página web que use el dictado de Chrome.
+      </p>
+      <p>
+        <strong>Nosotros no recibimos, no escuchamos y no almacenamos tu audio en ningún
+        momento.</strong> Pero no podríamos ofrecer el Servicio sin ese componente, y nos
+        parece que debes saberlo antes de suscribirte, no después. El tratamiento que hace
+        Google de esos datos se rige por su
+        <a href="https://policies.google.com/privacy" rel="noopener">política de privacidad</a>.
+      </p>
+
+      <h2>Qué datos tratamos</h2>
+      <table>
+        <thead>
+          <tr><th>Dato</th><th>Para qué</th><th>Dónde queda</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tu <strong>correo electrónico</strong> e identificador de cuenta de Google</td>
+            <td>Identificar tu cuenta y saber si tu licencia está activa</td>
+            <td>Nuestra base de datos (Supabase)</td>
+          </tr>
+          <tr>
+            <td><strong>Estado de la suscripción</strong>: plan, fecha de inicio de la prueba, fin del periodo</td>
+            <td>Permitir o denegar el acceso</td>
+            <td>Nuestra base de datos (Supabase)</td>
+          </tr>
+          <tr>
+            <td><strong>Identificadores de cliente y suscripción</strong> de Paddle</td>
+            <td>Relacionar tu cuenta con tus pagos y abrir el portal de suscripción</td>
+            <td>Nuestra base de datos (Supabase)</td>
+          </tr>
+          <tr>
+            <td><strong>Tus preferencias</strong>: idioma, velocidad, voz y nivel de exigencia</td>
+            <td>Recordar cómo tienes configurada la extensión</td>
+            <td>Tu navegador. Chrome las sincroniza entre tus dispositivos. No nos llegan.</td>
+          </tr>
+          <tr>
+            <td><strong>Sesión y última comprobación de licencia</strong></td>
+            <td>Mantenerte dentro y no bloquearte si te quedas sin conexión</td>
+            <td>Solo tu dispositivo</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Qué datos NO tratamos</h2>
+      <ul>
+        <li><strong>Tu audio.</strong> Nunca llega a nosotros.</li>
+        <li><strong>Las transcripciones.</strong> La comparación entre lo que dices y lo que toca
+          leer ocurre dentro de tu navegador. No se envían ni se guardan.</li>
+        <li><strong>El texto que practicas</strong> ni las páginas que visitas. La extensión solo
+          lee el texto que tú seleccionas, y lo procesa en tu navegador.</li>
+        <li><strong>Los datos de tu tarjeta.</strong> Los introduces en el formulario de Paddle.
+          Nunca pasan por nuestros sistemas y no tenemos acceso a ellos.</li>
+      </ul>
+      <p>
+        No usamos analítica, ni rastreadores, ni cookies de publicidad.
+        <strong>No vendemos ni cedemos tus datos a nadie</strong>, ni los usamos para
+        publicidad ni para entrenar modelos.
+      </p>
+
+      <h2>Base legal</h2>
+      <ul>
+        <li><strong>Ejecución del contrato</strong>: tu cuenta, tu licencia y tus pagos. Sin
+          estos datos no podemos prestarte el Servicio.</li>
+        <li><strong>Obligación legal</strong>: conservación de registros contables y fiscales.</li>
+        <li><strong>Consentimiento</strong>: el acceso al micrófono, que concedes en el navegador
+          y puedes retirar cuando quieras desde los ajustes de Chrome.</li>
+      </ul>
+
+      <h2>Con quién los compartimos</h2>
+      <table>
+        <thead>
+          <tr><th>Proveedor</th><th>Qué recibe</th><th>Por qué</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Google</strong></td>
+            <td>El audio del micrófono; tu correo al iniciar sesión; tus preferencias vía sincronización de Chrome</td>
+            <td>Reconocimiento de voz, identificación y sincronización del navegador</td>
+          </tr>
+          <tr>
+            <td><strong>Supabase</strong></td>
+            <td>Tu correo y el estado de tu suscripción</td>
+            <td>Alojamiento de la base de datos y del sistema de cuentas</td>
+          </tr>
+          <tr>
+            <td><strong>Paddle</strong></td>
+            <td>Tus datos de pago y facturación</td>
+            <td>Procesar el cobro como comerciante registrado y emitir la factura</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        Si usas una voz «remota» del megáfono, el texto de la palabra que pulsas se envía al
+        proveedor de esa voz para sintetizarla. La extensión prefiere voces locales de tu
+        sistema siempre que existan, entre otras cosas por esto.
+      </p>
+      <p class="suave">
+        Algunos de estos proveedores tratan datos fuera del Reino Unido. Las transferencias
+        se amparan en decisiones de adecuación o en cláusulas contractuales tipo, según el
+        caso.
+      </p>
+
+      <h2>Cuánto tiempo los guardamos</h2>
+      <p>
+        Los datos de tu cuenta, mientras la tengas abierta. Si la cierras, los eliminamos en
+        un plazo de <strong>30 días</strong>, salvo los registros de facturación, que las
+        obligaciones fiscales del Reino Unido nos exigen conservar <strong>6 años</strong>.
+      </p>
+
+      <h2>Tus derechos</h2>
+      <p>
+        Puedes pedirnos acceder a tus datos, corregirlos, eliminarlos, limitar u oponerte a
+        su tratamiento, y recibirlos en un formato portable. Escríbenos a
+        <span class="rellenar">[TU CORREO]</span> y responderemos dentro del plazo de un mes.
+      </p>
+      <p>
+        Si crees que no hemos tratado bien tus datos, puedes reclamar ante la autoridad de
+        control del Reino Unido, la
+        <a href="https://ico.org.uk/make-a-complaint/" rel="noopener">Information Commissioner's Office (ICO)</a>,
+        o ante la autoridad de tu país de residencia.
+      </p>
+
+      <h2>Menores</h2>
+      <p>
+        El Servicio no está dirigido a menores de 16 años. Si detectamos una cuenta de un
+        menor de esa edad sin consentimiento válido, la eliminaremos.
+      </p>
+
+      <h2>Cambios</h2>
+      <p>
+        Si modificamos esta política de forma relevante, actualizaremos la fecha de arriba y
+        te avisaremos al correo de tu cuenta antes de que los cambios surtan efecto.
+      </p>
+    </main>
+
+    <footer>
+      <nav>
+        <a href="../">Inicio</a>
+        <a href="../terminos/">Términos y condiciones</a>
+        <a href="../reembolsos/">Reembolsos</a>
+      </nav>
+      <p>
+        Pronuncia es un producto de <span class="rellenar">[TU NOMBRE LEGAL]</span>.
+        Pagos procesados por Paddle.com Market Limited.
+      </p>
+    </footer>
+  </body>
+</html>

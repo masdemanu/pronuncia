@@ -1,0 +1,80 @@
+/* Estilo del sitio de Pronuncia. Uno solo para las cinco páginas, con la misma
+   paleta que la extensión, para que quien llega desde el popup reconozca dónde
+   está. Sin dependencias ni fuentes remotas: una página de pago que espera a
+   descargar una tipografía es una página de pago que a veces no aparece. */
+
+:root {
+  --texto: #1f2328;
+  --suave: #57606a;
+  --enlace: #0969da;
+  --linea: #d8dee4;
+  --fondo-suave: #f6f8fa;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font: 16px/1.6 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--texto);
+  background: #fff;
+}
+
+header, main, footer { max-width: 44rem; margin: 0 auto; padding: 0 1.5rem; }
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+header .marca { font-weight: 600; font-size: 1.1rem; text-decoration: none; color: var(--texto); }
+header nav { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.9rem; }
+
+h1 { font-size: 1.8rem; line-height: 1.3; margin: 1.5rem 0 0.5rem; }
+h2 { font-size: 1.2rem; margin: 2rem 0 0.5rem; }
+h3 { font-size: 1rem; margin: 1.5rem 0 0.25rem; }
+
+p, li { color: var(--texto); }
+.suave { color: var(--suave); }
+a { color: var(--enlace); }
+
+.entrada { font-size: 1.1rem; color: var(--suave); margin-top: 0; }
+
+.precios { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0; }
+.plan {
+  flex: 1 1 12rem;
+  border: 1px solid var(--linea);
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+}
+.plan .cantidad { font-size: 1.5rem; font-weight: 600; display: block; }
+
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.95rem; }
+th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--linea); vertical-align: top; }
+th { background: var(--fondo-suave); font-weight: 600; }
+
+/* Los huecos que hay que rellenar antes de publicar. Se marcan en rojo a
+   propósito: un dato de relleno en los Términos es justo lo que hace que Paddle
+   rechace la verificación, y así no se puede pasar por alto. */
+.rellenar {
+  background: #fff1f0;
+  color: #b3261e;
+  border-bottom: 1px dashed #b3261e;
+  padding: 0 0.15rem;
+  font-weight: 600;
+}
+
+footer {
+  border-top: 1px solid var(--linea);
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
+  font-size: 0.9rem;
+  color: var(--suave);
+}
+footer nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem; }

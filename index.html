@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!--
+  Portada. Paddle no aprueba un dominio solo por tener página de pago: revisa
+  que el sitio explique qué vendes, cuánto cuesta y qué recibe el comprador, y
+  que términos, reembolsos y privacidad se alcancen desde la navegación. Esta
+  página existe para eso tanto como para el visitante.
+
+  Todos los enlaces son relativos a propósito. El sitio puede vivir en la raíz
+  de un dominio o en una subcarpeta (github.io/pronuncia): con rutas absolutas
+  como «/terminos/» el segundo caso se rompe entero.
+-->
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pronuncia — práctica de lectura en voz alta</title>
+    <meta name="description" content="Extensión de Chrome para practicar lectura en voz alta: el avance se bloquea hasta que pronuncies bien cada palabra." />
+    <link rel="stylesheet" href="estilo.css" />
+  </head>
+  <body>
+    <header>
+      <a class="marca" href="./">Pronuncia</a>
+      <nav>
+        <a href="#precios">Precios</a>
+        <a href="terminos/">Términos</a>
+        <a href="reembolsos/">Reembolsos</a>
+        <a href="privacidad/">Privacidad</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Lee en voz alta. No avanzas hasta pronunciarlo bien.</h1>
+      <p class="entrada">
+        Pronuncia es una extensión de Chrome para practicar lectura en voz alta con
+        cualquier texto de la web. Seleccionas un párrafo, lo lees, y el texto solo
+        avanza cuando el reconocedor entiende la palabra que tocaba.
+      </p>
+
+      <h2>Cómo funciona</h2>
+      <ol>
+        <li>Selecciona cualquier texto de una página web.</li>
+        <li>Ábrelo con el menú contextual o con <strong>Ctrl+Shift+L</strong> (<strong>⌘+Shift+L</strong> en Mac).</li>
+        <li>Lee en voz alta. La palabra actual se resalta y no pasa a la siguiente hasta que la digas bien.</li>
+        <li>Si te atascas, pulsa la palabra y la oirás pronunciada.</li>
+      </ol>
+
+      <h2>Qué incluye</h2>
+      <ul>
+        <li><strong>Seis idiomas</strong>: español, inglés, portugués, francés, italiano y alemán, con sus variantes regionales.</li>
+        <li><strong>Detección automática del idioma</strong> del texto seleccionado.</li>
+        <li><strong>Megáfono de referencia</strong>: pulsa cualquier palabra para escuchar cómo se pronuncia.</li>
+        <li><strong>Exigencia ajustable</strong>, para dar más o menos margen según tu nivel.</li>
+        <li><strong>Velocidad de lectura</strong> configurable en el megáfono.</li>
+        <li>Funciona en <strong>cualquier página web</strong>, sin copiar y pegar en ningún sitio.</li>
+      </ul>
+
+      <h2 id="precios">Precios</h2>
+      <p>
+        <strong>14 días de prueba gratis</strong>, sin tarjeta. Después, elige plan:
+      </p>
+
+      <div class="precios">
+        <div class="plan">
+          <span class="cantidad">US$10</span>
+          <span class="suave">al mes</span>
+        </div>
+        <div class="plan">
+          <span class="cantidad">US$100</span>
+          <span class="suave">al año · equivale a 10 meses</span>
+        </div>
+      </div>
+
+      <p class="suave">
+        Los precios están en dólares estadounidenses. Los impuestos aplicables según tu
+        país se calculan y se muestran en el momento del pago. Puedes cancelar cuando
+        quieras y seguirás teniendo acceso hasta el final del periodo que ya pagaste.
+      </p>
+
+      <p>
+        La suscripción se contrata desde la propia extensión, que es la que sabe a qué
+        cuenta hay que activarla. Consulta también los
+        <a href="terminos/">términos</a>, la <a href="reembolsos/">política de reembolsos</a>
+        y la <a href="privacidad/">política de privacidad</a>.
+      </p>
+
+      <h2>Antes de suscribirte, conviene que sepas</h2>
+      <p>
+        Pronuncia usa el reconocimiento de voz de Chrome, que indica <em>qué palabras
+        entendió</em>, no una nota de pronunciación por fonema. Es indulgente con acentos
+        marcados y falla con nombres propios y tecnicismos. Sirve para practicar fluidez
+        y soltura leyendo; no sustituye a una evaluación fonética.
+      </p>
+      <p>
+        Ese reconocimiento <strong>envía el audio a los servidores de Google</strong>, igual
+        que en cualquier web que use el dictado de Chrome. Lo explicamos en detalle en la
+        <a href="privacidad/">política de privacidad</a>.
+      </p>
+      <p>
+        Necesitas <strong>Google Chrome</strong>, micrófono y conexión a internet. Los 14 días
+        de prueba están para comprobar si te sirve antes de pagar nada.
+      </p>
+    </main>
+
+    <footer>
+      <nav>
+        <a href="terminos/">Términos y condiciones</a>
+        <a href="reembolsos/">Reembolsos</a>
+        <a href="privacidad/">Privacidad</a>
+        <a href="mailto:CORREO@EJEMPLO.COM">Contacto: <span class="rellenar">[TU CORREO]</span></a>
+      </nav>
+      <p>
+        Pronuncia es un producto de <span class="rellenar">[TU NOMBRE LEGAL]</span>,
+        autónomo registrado en el Reino Unido. Los pagos los procesa Paddle.com Market
+        Limited como comerciante registrado (<i>merchant of record</i>).
+      </p>
+    </footer>
+  </body>
+</html>

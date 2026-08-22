@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+  Página de pago de Pronuncia. Va en `/pay` del dominio y se configura en Paddle
+  como «default payment link» (Checkout → Checkout settings). Paddle Billing no
+  ofrece enlaces de pago sueltos: exige una página propia con Paddle.js, y sin
+  ella la cuenta ni siquiera puede crear transacciones. Por eso existe.
+
+  Se llama `pay/index.html` y no `pay.html` porque así el servidor la sirve como
+  `/pay`, sin extensión, que es la dirección que se registra en Paddle.
+
+  No sabe en qué dominio vive ni le hace falta. Quién la abre y con qué dominio
+  sale de `paymentSite`, en src/license/config.js de la extensión.
+
+  La extensión la abre así:
+    https://<dominio>/pay?plan=monthly&uid=<id de Supabase>&email=<correo>
+
+  El `uid` viaja por la URL y acaba en `custom_data`, que es lo que el webhook
+  usa para saber a quién activar. Cualquiera puede manipularlo, y no importa:
+  lo peor que consigue es pagarle la suscripción a otro. Quien decide qué
+  cuenta queda activa es el webhook con la respuesta firmada de Paddle, nunca
+  esta página.
+-->
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pronuncia — suscripción</title>
+    <meta name="robots" content="noindex" />
+    <link rel="stylesheet" href="../estilo.css" />
+    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+    <style>
+      main { padding-top: 2rem; padding-bottom: 4rem; }
+      .error { color: #b3261e; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a class="marca" href="../">Pronuncia</a>
+      <nav>
+        <a href="../terminos/">Términos</a>
+        <a href="../reembolsos/">Reembolsos</a>
+        <a href="../privacidad/">Privacidad</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Completa tu suscripción</h1>
+      <p id="msg">Abriendo el pago seguro…</p>
+      <p class="suave">
+        El cobro lo procesa Paddle.com Market Limited como comerciante registrado
+        (<i>merchant of record</i>). Los datos de tu tarjeta se introducen en su
+        formulario y no pasan por nosotros en ningún momento.
+      </p>
+    </main>
+
+    <footer>
+      <nav>
+        <a href="../terminos/">Términos y condiciones</a>
+        <a href="../reembolsos/">Reembolsos</a>
+        <a href="../privacidad/">Privacidad</a>
+        <a href="mailto:CORREO@EJEMPLO.COM">Contacto: <span class="rellenar">[TU CORREO]</span></a>
+      </nav>
+    </footer>
+
+    <script>
+      // ---- Lo único que hay que rellenar -----------------------------
+      const PADDLE = {
+        // Paddle → Developer tools → Authentication → Client-side tokens.
+        // Es pública por diseño: viaja en una página que cualquiera puede ver.
+        // Las otras dos claves de Paddle (la de API y la del webhook) no pueden
+        // aparecer aquí jamás: van en los secretos de Supabase.
+        token: '',
+        // Paddle → Catalog → Products → cada precio tiene su id `pri_…`.
+        prices: { monthly: '', yearly: '' },
+        // 'sandbox' mientras pruebas, 'production' cuando ya cobras de verdad.
+        environment: 'sandbox'
+      };
+      // ----------------------------------------------------------------
+
+      const msg = document.getElementById('msg');
+      const params = new URLSearchParams(location.search);
+
+      function fail(text) {
+        msg.textContent = text;
+        msg.className = 'error';
+      }
+
+      if (PADDLE.environment === 'sandbox') Paddle.Environment.set('sandbox');
+
+      if (!PADDLE.token) {
+        fail('Falta configurar el token de Paddle en esta página.');
+      } else {
+        Paddle.Initialize({ token: PADDLE.token });
+
+        // Paddle vuelve a esta misma página con `_ptxn` para retomar una
+        // transacción ya creada. En ese caso Paddle.js abre el checkout solo:
+        // hacerlo nosotros además abriría dos.
+        if (!params.has('_ptxn')) {
+          const plan = params.get('plan') || 'monthly';
+          const priceId = PADDLE.prices[plan];
+          const uid = params.get('uid') || '';
+          const email = params.get('email') || '';
+
+          if (!priceId) {
+            fail(`No hay ningún precio configurado para el plan «${plan}».`);
+          } else if (!uid) {
+            // Sin id de cuenta el pago se cobraría y no activaría nada. Vale
+            // más no cobrar que cobrar sin poder dar el servicio.
+            fail('Falta el identificador de la cuenta. Abre el pago desde la extensión.');
+          } else {
+            Paddle.Checkout.open({
+              items: [{ priceId, quantity: 1 }],
+              customer: email ? { email } : undefined,
+              customData: { user_id: uid },
+              settings: { displayMode: 'overlay', locale: 'es' }
+            });
+            msg.innerHTML =
+              'Si no se abre el pago, <a href="#" onclick="location.reload()">recarga la página</a>.';
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
