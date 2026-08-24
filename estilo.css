@@ -1,66 +1,178 @@
-/* Estilo del sitio de Pronuncia. Uno solo para las cinco páginas, con la misma
-   paleta que la extensión, para que quien llega desde el popup reconozca dónde
-   está. Sin dependencias ni fuentes remotas: una página de pago que espera a
-   descargar una tipografía es una página de pago que a veces no aparece. */
+/* Estilo del sitio de Pronuncia. Uno solo para todas las páginas, en los dos
+   idiomas, para que quien llega desde el popup reconozca dónde está.
+
+   Sin dependencias ni fuentes remotas: una página de pago que espera a
+   descargar una tipografía es una página de pago que a veces no aparece.
+
+   La paleta es de cuatro colores y no todos valen para todo. Medidos sobre el
+   fondo crema: el teal oscuro da 5,5:1 y sirve para texto; el teal medio da
+   2,5:1 y el claro 1,6:1, así que esos dos son SOLO decoración —bordes, filetes,
+   rellenos—. Texto blanco sobre teal medio tampoco llega (2,9:1), por eso los
+   botones sólidos van en teal oscuro. */
 
 :root {
-  --texto: #1f2328;
-  --suave: #57606a;
-  --enlace: #0969da;
-  --linea: #d8dee4;
-  --fondo-suave: #f6f8fa;
+  --crema: #f2efe7;
+  --teal-claro: #9acbd0;
+  --teal-medio: #48a6a7;
+  --teal-oscuro: #006a71;
+
+  --texto: #16323a;
+  --suave: #5a6b70;
+  --enlace: var(--teal-oscuro);
+  --linea: #ddd8cc;
+  --linea-teal: var(--teal-claro);
+  --superficie: #fff;
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font: 16px/1.6 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font: 16px/1.65 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: var(--texto);
-  background: #fff;
+  background: var(--crema);
 }
 
-header, main, footer { max-width: 44rem; margin: 0 auto; padding: 0 1.5rem; }
+header, main, footer { max-width: 46rem; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ---- cabecera ---- */
 
 header {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  padding-top: 2rem;
-  padding-bottom: 1rem;
+  padding-top: 1.75rem;
+  padding-bottom: 1.25rem;
 }
 
-header .marca { font-weight: 600; font-size: 1.1rem; text-decoration: none; color: var(--texto); }
-header nav { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.9rem; }
+header .marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 650;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--teal-oscuro);
+}
+header .marca img { display: block; height: 2rem; width: auto; border-radius: 0.45rem; }
 
-h1 { font-size: 1.8rem; line-height: 1.3; margin: 1.5rem 0 0.5rem; }
-h2 { font-size: 1.2rem; margin: 2rem 0 0.5rem; }
+header nav { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; font-size: 0.9rem; }
+header nav a { color: var(--suave); text-decoration: none; }
+header nav a:hover { color: var(--teal-oscuro); text-decoration: underline; }
+
+/* El selector de idioma no es un enlace más de la navegación: se distingue para
+   que se encuentre sin leerla entera. */
+header nav a.idioma {
+  border: 1px solid var(--linea-teal);
+  border-radius: 999px;
+  padding: 0.15rem 0.7rem;
+  color: var(--teal-oscuro);
+}
+header nav a.idioma:hover { background: var(--teal-claro); text-decoration: none; }
+
+/* ---- texto ---- */
+
+h1 { font-size: 2rem; line-height: 1.25; margin: 1.5rem 0 0.5rem; letter-spacing: -0.02em; color: var(--teal-oscuro); }
+h2 { font-size: 1.2rem; margin: 2.25rem 0 0.5rem; color: var(--teal-oscuro); }
 h3 { font-size: 1rem; margin: 1.5rem 0 0.25rem; }
 
 p, li { color: var(--texto); }
+li { margin-bottom: 0.35rem; }
 .suave { color: var(--suave); }
-a { color: var(--enlace); }
+
+a { color: var(--enlace); text-underline-offset: 0.15em; }
+a:hover { color: var(--teal-medio); }
 
 .entrada { font-size: 1.1rem; color: var(--suave); margin-top: 0; }
+
+/* ---- precios ---- */
 
 .precios { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0; }
 .plan {
   flex: 1 1 12rem;
-  border: 1px solid var(--linea);
-  border-radius: 0.5rem;
-  padding: 1rem 1.25rem;
+  background: var(--superficie);
+  border: 1px solid var(--linea-teal);
+  border-radius: 0.75rem;
+  padding: 1.15rem 1.35rem;
 }
-.plan .cantidad { font-size: 1.5rem; font-weight: 600; display: block; }
+.plan .cantidad { font-size: 1.6rem; font-weight: 650; display: block; color: var(--teal-oscuro); }
 
-table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.95rem; }
-th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--linea); vertical-align: top; }
-th { background: var(--fondo-suave); font-weight: 600; }
+/* El anual lleva un filete grueso porque es el que interesa a las dos partes:
+   al comprador le sale dos meses gratis y al vendedor le baja la comisión
+   efectiva del 10 % al 5,5 %, que es donde se va el margen de un cobro de $10. */
+.plan.destacado { border-color: var(--teal-medio); box-shadow: inset 0 0 0 1px var(--teal-medio); }
+.plan .etiqueta {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  background: var(--teal-claro);
+  color: var(--teal-oscuro);
+  font-size: 0.75rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
 
-/* Los huecos que hay que rellenar antes de publicar. Se marcan en rojo a
-   propósito: un dato de relleno en los Términos es justo lo que hace que Paddle
-   rechace la verificación, y así no se puede pasar por alto. */
+/* ---- tablas ---- */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+  background: var(--superficie);
+  border: 1px solid var(--linea-teal);
+  border-radius: 0.6rem;
+  overflow: hidden;
+}
+th, td { text-align: left; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--linea); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+th { background: var(--teal-claro); color: var(--teal-oscuro); font-weight: 650; border-bottom-color: var(--teal-medio); }
+
+/* Las tablas de la política de privacidad no caben en un móvil: que se
+   desplacen ellas antes que la página entera. */
+.tabla { overflow-x: auto; }
+
+/* ---- aviso de idioma ---- */
+
+/* Sugerir, no imponer. Una redirección automática por idioma sin escapatoria es
+   de las cosas que más molestan, y además se equivoca: hay quien navega en un
+   idioma y quiere leer en otro. */
+.aviso-idioma {
+  background: var(--superficie);
+  border: 1px solid var(--linea-teal);
+  border-left: 4px solid var(--teal-medio);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  margin: 1.25rem auto 0;
+  max-width: 46rem;
+  font-size: 0.92rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.aviso-idioma button {
+  border: 1px solid var(--linea-teal);
+  background: transparent;
+  color: var(--suave);
+  border-radius: 0.4rem;
+  padding: 0.2rem 0.6rem;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.aviso-idioma button:hover { background: var(--crema); color: var(--texto); }
+
+/* ---- huecos por rellenar ---- */
+
+/* Se marcan en rojo a propósito: un dato de relleno en los Términos es justo lo
+   que hace que Paddle rechace la verificación, y así no se puede pasar por alto. */
 .rellenar {
   background: #fff1f0;
   color: #b3261e;
@@ -69,12 +181,16 @@ th { background: var(--fondo-suave); font-weight: 600; }
   font-weight: 600;
 }
 
+/* ---- pie ---- */
+
 footer {
-  border-top: 1px solid var(--linea);
-  margin-top: 3rem;
+  border-top: 1px solid var(--linea-teal);
+  margin-top: 3.5rem;
   padding-top: 1.5rem;
   padding-bottom: 3rem;
   font-size: 0.9rem;
   color: var(--suave);
 }
 footer nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem; }
+footer a { color: var(--suave); }
+footer a:hover { color: var(--teal-oscuro); }

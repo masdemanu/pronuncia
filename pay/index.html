@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <!--
-  Página de pago de Pronuncia. Va en `/pay` del dominio y se configura en Paddle
-  como «default payment link» (Checkout → Checkout settings). Paddle Billing no
-  ofrece enlaces de pago sueltos: exige una página propia con Paddle.js, y sin
-  ella la cuenta ni siquiera puede crear transacciones. Por eso existe.
+  Pronuncia payment page. It lives at `/pay` of the domain and is registered in
+  Paddle as the "default payment link" (Checkout → Checkout settings). Paddle
+  Billing does not hand out standalone payment links: it requires a page of your
+  own running Paddle.js, and without one the account cannot even create
+  transactions. That is why this page exists.
 
-  Se llama `pay/index.html` y no `pay.html` porque así el servidor la sirve como
-  `/pay`, sin extensión, que es la dirección que se registra en Paddle.
+  It is called `pay/index.html` and not `pay.html` so the server serves it as
+  `/pay`, without an extension, which is the address registered with Paddle.
 
-  No sabe en qué dominio vive ni le hace falta. Quién la abre y con qué dominio
-  sale de `paymentSite`, en src/license/config.js de la extensión.
+  It does not know which domain it lives on and does not need to. Who opens it
+  and with what domain comes from `paymentSite`, in src/license/config.js of the
+  extension.
 
-  La extensión la abre así:
-    https://<dominio>/pay?plan=monthly&uid=<id de Supabase>&email=<correo>
+  The extension opens it like this:
+    https://<domain>/pay/?plan=monthly&uid=<Supabase id>&email=<email>
 
-  El `uid` viaja por la URL y acaba en `custom_data`, que es lo que el webhook
-  usa para saber a quién activar. Cualquiera puede manipularlo, y no importa:
-  lo peor que consigue es pagarle la suscripción a otro. Quien decide qué
-  cuenta queda activa es el webhook con la respuesta firmada de Paddle, nunca
-  esta página.
+  The `uid` travels in the URL and ends up in `custom_data`, which is what the
+  webhook uses to know whose account to activate. Anyone can tamper with it, and
+  it does not matter: the worst they achieve is paying for someone else's
+  subscription. What decides which account goes active is the webhook with
+  Paddle's signed response, never this page.
+
+  This is the ONE page that is not duplicated per language. Its real content is
+  Paddle's overlay, it is `noindex`, and Paddle.js makes JavaScript mandatory
+  here anyway — so swapping four strings in JS costs nothing, while a second
+  copy would mean a second URL to register in Paddle and one more thing to keep
+  in sync at the exact point where a mistake costs a sale.
 -->
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pronuncia — suscripción</title>
+    <title>Pronuncia — subscription</title>
     <meta name="robots" content="noindex" />
     <link rel="stylesheet" href="../estilo.css" />
+    <link rel="icon" href="../favicon-32.png" sizes="32x32" />
     <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
     <style>
       main { padding-top: 2rem; padding-bottom: 4rem; }
@@ -35,50 +44,99 @@
   </head>
   <body>
     <header>
-      <a class="marca" href="../">Pronuncia</a>
+      <a class="marca" href="../"><img src="../logo.png" alt="" /><span>Pronuncia</span></a>
       <nav>
-        <a href="../terminos/">Términos</a>
-        <a href="../reembolsos/">Reembolsos</a>
-        <a href="../privacidad/">Privacidad</a>
+        <a id="nav-terms" href="../terms/">Terms</a>
+        <a id="nav-refunds" href="../refunds/">Refunds</a>
+        <a id="nav-privacy" href="../privacy/">Privacy</a>
       </nav>
     </header>
 
     <main>
-      <h1>Completa tu suscripción</h1>
-      <p id="msg">Abriendo el pago seguro…</p>
-      <p class="suave">
-        El cobro lo procesa Paddle.com Market Limited como comerciante registrado
-        (<i>merchant of record</i>). Los datos de tu tarjeta se introducen en su
-        formulario y no pasan por nosotros en ningún momento.
+      <h1 id="titulo">Complete your subscription</h1>
+      <p id="msg">Opening secure checkout…</p>
+      <p class="suave" id="nota">
+        The charge is processed by Paddle.com Market Limited as merchant of record. Your
+        card details are entered into their form and never pass through us at any point.
       </p>
     </main>
 
     <footer>
       <nav>
-        <a href="../terminos/">Términos y condiciones</a>
-        <a href="../reembolsos/">Reembolsos</a>
-        <a href="../privacidad/">Privacidad</a>
-        <a href="mailto:masdemanu@gmail.com">Contacto: masdemanu@gmail.com</a>
+        <a id="pie-terms" href="../terms/">Terms and conditions</a>
+        <a id="pie-refunds" href="../refunds/">Refunds</a>
+        <a id="pie-privacy" href="../privacy/">Privacy</a>
+        <a href="mailto:masdemanu@gmail.com">Contact: masdemanu@gmail.com</a>
       </nav>
     </footer>
 
     <script>
-      // ---- Lo único que hay que rellenar -----------------------------
+      // ---- The only part that needs filling in -----------------------
       const PADDLE = {
         // Paddle → Developer tools → Authentication → Client-side tokens.
-        // Es pública por diseño: viaja en una página que cualquiera puede ver.
-        // Las otras dos claves de Paddle (la de API y la del webhook) no pueden
-        // aparecer aquí jamás: van en los secretos de Supabase.
+        // Public by design: it travels in a page anyone can read. The other two
+        // Paddle keys (the API key and the webhook secret) must never appear
+        // here: they live in Supabase secrets.
         token: '',
-        // Paddle → Catalog → Products → cada precio tiene su id `pri_…`.
+        // Paddle → Catalog → Products → each price has its own `pri_…` id.
         prices: { monthly: '', yearly: '' },
-        // 'sandbox' mientras pruebas, 'production' cuando ya cobras de verdad.
+        // 'sandbox' while testing, 'production' once you charge for real.
         environment: 'sandbox'
       };
       // ----------------------------------------------------------------
 
+      // Paddle's overlay is localised by `locale`. Pinning it to one language
+      // meant a Brazilian buyer met a checkout in Spanish at the exact moment
+      // they were deciding whether to trust it. This is the browser's own
+      // choice, which is the best signal available without asking anyone.
+      const LOCALES_PADDLE = ['ar', 'zh', 'cs', 'da', 'de', 'el', 'en', 'es', 'fr', 'he',
+        'hu', 'it', 'ja', 'ko', 'nl', 'no', 'pl', 'pt', 'ru', 'sv', 'th', 'tr', 'uk'];
+
+      const idiomas = navigator.languages || [navigator.language || 'en'];
+      const preferido = idiomas.map((l) => String(l).slice(0, 2).toLowerCase());
+      const locale = preferido.find((l) => LOCALES_PADDLE.includes(l)) || 'en';
+      const esEspanol = preferido[0] === 'es';
+
+      // Four strings and three links. Not worth a second page: see the comment
+      // at the top of this file.
+      if (esEspanol) {
+        document.documentElement.lang = 'es';
+        document.getElementById('titulo').textContent = 'Completa tu suscripción';
+        document.getElementById('nota').textContent =
+          'El cobro lo procesa Paddle.com Market Limited como comerciante registrado. ' +
+          'Los datos de tu tarjeta se introducen en su formulario y no pasan por nosotros ' +
+          'en ningún momento.';
+        const ES = { terms: '../es/terminos/', refunds: '../es/reembolsos/', privacy: '../es/privacidad/' };
+        const ETIQUETA = { terms: 'Términos', refunds: 'Reembolsos', privacy: 'Privacidad' };
+        const PIE = { terms: 'Términos y condiciones', refunds: 'Reembolsos', privacy: 'Privacidad' };
+        for (const clave of Object.keys(ES)) {
+          const arriba = document.getElementById('nav-' + clave);
+          const abajo = document.getElementById('pie-' + clave);
+          arriba.href = abajo.href = ES[clave];
+          arriba.textContent = ETIQUETA[clave];
+          abajo.textContent = PIE[clave];
+        }
+      }
+
+      const T = esEspanol
+        ? {
+            abriendo: 'Abriendo el pago seguro…',
+            sinToken: 'Falta configurar el token de Paddle en esta página.',
+            sinPrecio: (p) => `No hay ningún precio configurado para el plan «${p}».`,
+            sinCuenta: 'Falta el identificador de la cuenta. Abre el pago desde la extensión.',
+            recarga: 'Si no se abre el pago, <a href="#" onclick="location.reload()">recarga la página</a>.'
+          }
+        : {
+            abriendo: 'Opening secure checkout…',
+            sinToken: 'The Paddle token has not been configured on this page.',
+            sinPrecio: (p) => `No price is configured for the "${p}" plan.`,
+            sinCuenta: 'The account identifier is missing. Open the checkout from the extension.',
+            recarga: 'If the checkout does not open, <a href="#" onclick="location.reload()">reload the page</a>.'
+          };
+
       const msg = document.getElementById('msg');
       const params = new URLSearchParams(location.search);
+      msg.textContent = T.abriendo;
 
       function fail(text) {
         msg.textContent = text;
@@ -88,13 +146,13 @@
       if (PADDLE.environment === 'sandbox') Paddle.Environment.set('sandbox');
 
       if (!PADDLE.token) {
-        fail('Falta configurar el token de Paddle en esta página.');
+        fail(T.sinToken);
       } else {
         Paddle.Initialize({ token: PADDLE.token });
 
-        // Paddle vuelve a esta misma página con `_ptxn` para retomar una
-        // transacción ya creada. En ese caso Paddle.js abre el checkout solo:
-        // hacerlo nosotros además abriría dos.
+        // Paddle comes back to this same page with `_ptxn` to resume a
+        // transaction it already created. In that case Paddle.js opens the
+        // checkout by itself: doing it here too would open two.
         if (!params.has('_ptxn')) {
           const plan = params.get('plan') || 'monthly';
           const priceId = PADDLE.prices[plan];
@@ -102,20 +160,20 @@
           const email = params.get('email') || '';
 
           if (!priceId) {
-            fail(`No hay ningún precio configurado para el plan «${plan}».`);
+            fail(T.sinPrecio(plan));
           } else if (!uid) {
-            // Sin id de cuenta el pago se cobraría y no activaría nada. Vale
-            // más no cobrar que cobrar sin poder dar el servicio.
-            fail('Falta el identificador de la cuenta. Abre el pago desde la extensión.');
+            // Without an account id the payment would be taken and activate
+            // nothing. Better not to charge than to charge without being able
+            // to deliver.
+            fail(T.sinCuenta);
           } else {
             Paddle.Checkout.open({
               items: [{ priceId, quantity: 1 }],
               customer: email ? { email } : undefined,
               customData: { user_id: uid },
-              settings: { displayMode: 'overlay', locale: 'es' }
+              settings: { displayMode: 'overlay', locale }
             });
-            msg.innerHTML =
-              'Si no se abre el pago, <a href="#" onclick="location.reload()">recarga la página</a>.';
+            msg.innerHTML = T.recarga;
           }
         }
       }

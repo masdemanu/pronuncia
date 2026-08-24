@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!--
+  Privacy policy, English. Required by Paddle to verify the domain and by the
+  Chrome Web Store to publish the extension.
+
+  Everything here has been checked against the code, not assumed. In particular:
+  Chrome's recogniser SENDS THE AUDIO TO GOOGLE, and this page says so in plain
+  words. Writing "your voice never leaves your device" would have been false, and
+  a false privacy statement is a real legal problem.
+
+  If the recognition engine is ever changed, or anything is ever sent to another
+  third party, this page has to be updated in the same commit — and so does its
+  Spanish translation.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy policy — Pronuncia</title>
+    <link rel="stylesheet" href="../estilo.css" />
+    <link rel="icon" href="../favicon-32.png" sizes="32x32" />
+    <link rel="alternate" hreflang="en" href="https://pronuncia.dev/privacy/" />
+    <link rel="alternate" hreflang="es" href="https://pronuncia.dev/es/privacidad/" />
+  </head>
+  <body>
+    <header>
+      <a class="marca" href="../"><img src="../logo.png" alt="" /><span>Pronuncia</span></a>
+      <nav>
+        <a href="../">Home</a>
+        <a href="../terms/">Terms</a>
+        <a href="../refunds/">Refunds</a>
+        <a class="idioma" href="../es/privacidad/" hreflang="es" lang="es">Español</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Privacy policy</h1>
+      <p class="suave">Last updated: 24 August 2026</p>
+
+      <h2>Who handles your data</h2>
+      <p>
+        The data controller is Manuel Cárdenas, a sole trader registered in the United
+        Kingdom, of 71 High Street, Dundee DD1 1SD. For anything about your data:
+        masdemanu@gmail.com.
+      </p>
+
+      <h2>The most important thing, first</h2>
+      <p>
+        Pronuncia uses the <strong>speech recognition built into Google Chrome</strong>. That
+        component belongs to the browser, not to us, and it works by
+        <strong>sending your microphone audio to Google's servers</strong> to be transcribed.
+        The same happens on any website that uses Chrome's dictation.
+      </p>
+      <p>
+        <strong>We never receive, listen to or store your audio.</strong> But we could not
+        offer the Service without that component, and we think you should know before you
+        subscribe rather than after. Google's handling of that data is governed by their
+        <a href="https://policies.google.com/privacy" rel="noopener">privacy policy</a>.
+      </p>
+
+      <h2>What data we handle</h2>
+      <div class="tabla">
+        <table>
+          <thead>
+            <tr><th>Data</th><th>What for</th><th>Where it lives</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Your <strong>email address</strong> and Google account identifier</td>
+              <td>Identifying your account and knowing whether your licence is active</td>
+              <td>Our database (Supabase)</td>
+            </tr>
+            <tr>
+              <td><strong>Subscription status</strong>: plan, trial start date, end of period</td>
+              <td>Granting or denying access</td>
+              <td>Our database (Supabase)</td>
+            </tr>
+            <tr>
+              <td><strong>Paddle customer and subscription identifiers</strong></td>
+              <td>Linking your account to your payments and opening the subscription portal</td>
+              <td>Our database (Supabase)</td>
+            </tr>
+            <tr>
+              <td><strong>Your preferences</strong>: language, speed, voice and strictness</td>
+              <td>Remembering how you have the extension set up</td>
+              <td>Your browser. Chrome syncs them across your devices. They never reach us.</td>
+            </tr>
+            <tr>
+              <td><strong>Session and last licence check</strong></td>
+              <td>Keeping you signed in and not locking you out if you lose connection</td>
+              <td>Your device only</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>What data we do NOT handle</h2>
+      <ul>
+        <li><strong>Your audio.</strong> It never reaches us.</li>
+        <li><strong>The transcripts.</strong> Comparing what you said against what you were
+          meant to read happens inside your browser. Nothing is sent or stored.</li>
+        <li><strong>The text you practise on</strong>, or the pages you visit. The extension
+          only reads the text you select, and processes it in your browser.</li>
+        <li><strong>Your card details.</strong> You enter those into Paddle's form. They never
+          pass through our systems and we have no access to them.</li>
+      </ul>
+      <p>
+        We use no analytics, no trackers and no advertising cookies.
+        <strong>We do not sell or share your data with anyone</strong>, and we do not use it
+        for advertising or to train models.
+      </p>
+
+      <h2>Legal basis</h2>
+      <ul>
+        <li><strong>Performance of a contract</strong>: your account, your licence and your
+          payments. Without this data we cannot provide the Service.</li>
+        <li><strong>Legal obligation</strong>: keeping accounting and tax records.</li>
+        <li><strong>Consent</strong>: microphone access, which you grant in the browser and can
+          withdraw at any time from Chrome's settings.</li>
+      </ul>
+
+      <h2>Who we share it with</h2>
+      <div class="tabla">
+        <table>
+          <thead>
+            <tr><th>Provider</th><th>What they receive</th><th>Why</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Google</strong></td>
+              <td>Your microphone audio; your email when you sign in; your preferences via Chrome sync</td>
+              <td>Speech recognition, identity and browser sync</td>
+            </tr>
+            <tr>
+              <td><strong>Supabase</strong></td>
+              <td>Your email and subscription status</td>
+              <td>Hosting the database and the account system</td>
+            </tr>
+            <tr>
+              <td><strong>Paddle</strong></td>
+              <td>Your payment and billing details</td>
+              <td>Processing the charge as merchant of record and issuing the invoice</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        If you use a "remote" voice for the reference audio, the text of the word you click
+        is sent to that voice's provider to be synthesised. The extension prefers local
+        voices from your system whenever they exist, partly for this reason.
+      </p>
+      <p class="suave">
+        Some of these providers process data outside the United Kingdom. Those transfers
+        rely on adequacy decisions or on standard contractual clauses, as the case may be.
+      </p>
+
+      <h2>How long we keep it</h2>
+      <p>
+        Your account data, for as long as your account is open. If you close it, we delete
+        the data within <strong>30 days</strong>, except billing records, which UK tax
+        obligations require us to keep for <strong>6 years</strong>.
+      </p>
+
+      <h2>Your rights</h2>
+      <p>
+        You can ask us to access your data, correct it, delete it, restrict or object to its
+        processing, and to receive it in a portable format. Write to masdemanu@gmail.com and
+        we will respond within one month.
+      </p>
+      <p>
+        If you think we have handled your data badly, you can complain to the UK supervisory
+        authority, the
+        <a href="https://ico.org.uk/make-a-complaint/" rel="noopener">Information Commissioner's Office (ICO)</a>,
+        or to the authority in your country of residence.
+      </p>
+
+      <h2>Children</h2>
+      <p>
+        The Service is not directed at children under 16. If we find an account belonging to
+        someone under that age without valid consent, we will delete it.
+      </p>
+
+      <h2>Changes</h2>
+      <p>
+        If we change this policy materially, we will update the date above and tell you at
+        your account email before the changes take effect.
+      </p>
+
+      <h2>Language</h2>
+      <p class="suave">
+        This policy is also published <a href="../es/privacidad/" hreflang="es">in Spanish</a>
+        for convenience. In the event of any discrepancy, this English version prevails.
+      </p>
+    </main>
+
+    <footer>
+      <nav>
+        <a href="../">Home</a>
+        <a href="../terms/">Terms and conditions</a>
+        <a href="../refunds/">Refunds</a>
+        <a href="../es/privacidad/" hreflang="es" lang="es">Español</a>
+      </nav>
+      <p>
+        Pronuncia is a product of Manuel Cárdenas. Payments processed by Paddle.com Market
+        Limited.
+      </p>
+    </footer>
+    <script src="../idioma.js"></script>
+  </body>
+</html>
