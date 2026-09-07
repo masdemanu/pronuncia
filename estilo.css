@@ -216,3 +216,19 @@ footer a:hover { color: var(--teal-oscuro); }
 }
 .instalar:hover { background: var(--teal-medio); color: #fff; }
 .instalar-nav { font-weight: 650; }
+
+/* Capturas del producto. `width`/`height` en el HTML reservan el hueco antes
+   de que la imagen llegue: sin ellos el texto salta cuando carga. */
+.captura { margin: 1.6rem 0 2rem; }
+.captura img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--linea);
+  border-radius: 10px;
+}
+.captura figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--suave);
+}
