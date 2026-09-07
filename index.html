@@ -24,9 +24,68 @@
     <link rel="stylesheet" href="estilo.css" />
     <link rel="icon" href="favicon-32.png" sizes="32x32" />
     <link rel="apple-touch-icon" href="icon-180.png" />
+    <link rel="canonical" href="https://pronuncia.dev/" />
     <link rel="alternate" hreflang="en" href="https://pronuncia.dev/" />
     <link rel="alternate" hreflang="es" href="https://pronuncia.dev/es/" />
     <link rel="alternate" hreflang="x-default" href="https://pronuncia.dev/" />
+
+    <!-- Para cuando alguien comparte el enlace: sin esto sale un
+         recuadro gris sin imagen ni texto. `og.png` mide 1200x630. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pronuncia" />
+    <meta property="og:title" content="Pronuncia — read-aloud practice that waits for you" />
+    <meta property="og:description" content="Chrome extension for reading practice out loud: the text will not move on until you pronounce each word clearly." />
+    <meta property="og:url" content="https://pronuncia.dev/" />
+    <meta property="og:image" content="https://pronuncia.dev/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Ficha para Google: qué es, quién lo vende y cuánto cuesta. No
+         lleva valoraciones porque todavía no hay ninguna, e inventarlas
+         es motivo de penalización. -->
+    <script type="application/ld+json">
+{
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Pronuncia",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Chrome",
+      "url": "https://pronuncia.dev/",
+      "downloadUrl": "https://chromewebstore.google.com/detail/ldpkjpkejbcinafgibibbiepdnjcapkn",
+      "inLanguage": [
+            "es",
+            "en",
+            "pt",
+            "fr",
+            "it",
+            "de"
+      ],
+      "author": {
+            "@type": "Person",
+            "name": "Manuel Cárdenas"
+      },
+      "offers": [
+            {
+                  "@type": "Offer",
+                  "price": "10",
+                  "priceCurrency": "USD",
+                  "description": "Monthly subscription",
+                  "url": "https://pronuncia.dev/#pricing"
+            },
+            {
+                  "@type": "Offer",
+                  "price": "100",
+                  "priceCurrency": "USD",
+                  "description": "Annual subscription",
+                  "url": "https://pronuncia.dev/#pricing"
+            }
+      ],
+      "description": "Chrome extension for reading practice out loud: the text will not move on until you pronounce each word clearly."
+}
+    </script>
   </head>
   <body>
     <header>
@@ -36,6 +95,7 @@
         <a href="terms/">Terms</a>
         <a href="refunds/">Refunds</a>
         <a href="privacy/">Privacy</a>
+        <a class="instalar-nav" href="https://chromewebstore.google.com/detail/ldpkjpkejbcinafgibibbiepdnjcapkn">Install</a>
         <a class="idioma" href="es/" hreflang="es" lang="es">Español</a>
       </nav>
     </header>
@@ -46,6 +106,11 @@
         Pronuncia is a Chrome extension for practising reading aloud with any text on
         the web. You select a paragraph, you read it, and the text only advances when
         the recogniser hears the word it was waiting for.
+      </p>
+
+      <p class="llamada">
+        <a class="instalar" href="https://chromewebstore.google.com/detail/ldpkjpkejbcinafgibibbiepdnjcapkn">Add to Chrome</a>
+        <span class="suave">Free for 21 days, no card required.</span>
       </p>
 
       <h2>How it works</h2>

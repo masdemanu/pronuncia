@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://pronuncia.dev/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pronuncia.dev/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://pronuncia.dev/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pronuncia.dev/" />
+    <lastmod>2026-09-07</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://pronuncia.dev/es/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pronuncia.dev/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://pronuncia.dev/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pronuncia.dev/" />
+    <lastmod>2026-09-07</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://pronuncia.dev/terms/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pronuncia.dev/terms/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://pronuncia.dev/es/terminos/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pronuncia.dev/" />
+    <lastmod>2026-09-07</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://pronuncia.dev/refunds/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pronuncia.dev/refunds/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://pronuncia.dev/es/reembolsos/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pronuncia.dev/" />
+    <lastmod>2026-09-07</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://pronuncia.dev/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pronuncia.dev/privacy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://pronuncia.dev/es/privacidad/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pronuncia.dev/" />
+    <lastmod>2026-09-07</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://pronuncia.dev/es/terminos/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pronuncia.dev/terms/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://pronuncia.dev/es/terminos/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pronuncia.dev/" />
+    <lastmod>2026-09-07</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://pronuncia.dev/es/reembolsos/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pronuncia.dev/refunds/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://pronuncia.dev/es/reembolsos/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pronuncia.dev/" />
+    <lastmod>2026-09-07</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://pronuncia.dev/es/privacidad/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pronuncia.dev/privacy/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://pronuncia.dev/es/privacidad/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pronuncia.dev/" />
+    <lastmod>2026-09-07</lastmod>
+    <priority>0.3</priority>
+  </url>
+</urlset>
