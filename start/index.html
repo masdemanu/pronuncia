@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--
+  La página que se abre sola al instalar la extensión.
+
+  La abre `chrome.runtime.onInstalled` SOLO cuando el motivo es `install`,
+  nunca en una actualización: abrir una pestaña cada vez que Chrome actualiza
+  en segundo plano es de las cosas que más molestan de una extensión.
+
+  Quien llega aquí acaba de instalarla y no ha leído nada. Así que esto no es
+  la portada otra vez: es qué hacer AHORA MISMO, en orden, y qué va a ver.
+  Si cambia el atajo o el menú contextual, esta página y su traducción se
+  actualizan en el mismo commit.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>You're in — Pronuncia</title>
+    <meta name="description" content="How to use Pronuncia: select text on any web page, read it out loud, and the text waits until you say each word clearly." />
+    <link rel="stylesheet" href="../estilo.css" />
+    <link rel="icon" href="../favicon-32.png" sizes="32x32" />
+    <link rel="canonical" href="https://pronuncia.dev/start/" />
+    <link rel="alternate" hreflang="en" href="https://pronuncia.dev/start/" />
+    <link rel="alternate" hreflang="es" href="https://pronuncia.dev/es/empezar/" />
+  </head>
+  <body>
+    <header>
+      <a class="marca" href="../"><img src="../logo.png" alt="" /><span>Pronuncia</span></a>
+      <nav>
+        <a href="../">Home</a>
+        <a href="../privacy/">Privacy</a>
+        <a class="idioma" href="../es/empezar/" hreflang="es" lang="es">Español</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>You're in. Here's how to use it.</h1>
+      <p class="suave">
+        Pronuncia doesn't open on its own. You call it on the text you want to read.
+      </p>
+
+      <h2>Try it right now</h2>
+      <ol>
+        <li><strong>Select a paragraph</strong> on any web page. This one works.</li>
+        <li>
+          <strong>Right-click and choose “Practise reading with this text”</strong>,
+          or press <strong>Ctrl+Shift+L</strong> (<strong>⌘+Shift+L</strong> on a Mac).
+        </li>
+        <li><strong>Read it out loud.</strong> Chrome will ask for your microphone the first time.</li>
+      </ol>
+
+      <h2>What you'll see</h2>
+      <p>
+        The word it is waiting for is highlighted in <strong>yellow</strong>. Say it clearly and
+        it turns <strong>green</strong>, and the highlight steps to the next one. The text does
+        not move on until you get it right — that is the whole point.
+      </p>
+      <p>
+        <strong>Miss one and it stops there.</strong> The word turns black and a speaker button
+        appears next to it: click it to hear how it should sound, say it again, and carry on.
+      </p>
+
+      <h2>If it feels too strict</h2>
+      <p>
+        Open the extension's icon and move <strong>strictness</strong> towards lenient. A strong
+        accent is not a mistake, and the recogniser is worse with proper nouns and technical
+        terms than with ordinary words. Give yourself room while you are starting.
+      </p>
+
+      <h2>Two things worth knowing</h2>
+      <p>
+        It works in <strong>six languages</strong> — English, Spanish, Portuguese, French,
+        Italian and German — and it works out which one the text is in on its own.
+      </p>
+      <p>
+        It uses <strong>Chrome's own speech recognition</strong>, which sends the audio to
+        Google's servers, exactly as any site with dictation does. We say so plainly in the
+        <a href="../privacy/">privacy policy</a>. You need a microphone and an internet
+        connection.
+      </p>
+
+      <p class="llamada">
+        <a class="instalar" href="../">Read more about Pronuncia</a>
+      </p>
+    </main>
+
+    <footer>
+      <nav>
+        <a href="../">Home</a>
+        <a href="../privacy/">Privacy policy</a>
+        <a href="../terms/">Terms and conditions</a>
+        <a href="../es/empezar/" hreflang="es" lang="es">Español</a>
+      </nav>
+      <p>Pronuncia is a product of Manuel Cárdenas.</p>
+    </footer>
+    <script src="../idioma.js"></script>
+  </body>
+</html>

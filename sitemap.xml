@@ -65,4 +65,20 @@
     <lastmod>2026-09-07</lastmod>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://pronuncia.dev/start/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pronuncia.dev/start/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://pronuncia.dev/es/empezar/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pronuncia.dev/start/" />
+    <lastmod>2026-10-02</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pronuncia.dev/es/empezar/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://pronuncia.dev/start/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://pronuncia.dev/es/empezar/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pronuncia.dev/start/" />
+    <lastmod>2026-10-02</lastmod>
+    <priority>0.8</priority>
+  </url>
 </urlset>
